@@ -19,6 +19,7 @@
 .MainContainer h1{
   color: white;
   position: relative;
+  letter-spacing: 5px;
   top: 15px;
   margin-bottom: 30px;
 }

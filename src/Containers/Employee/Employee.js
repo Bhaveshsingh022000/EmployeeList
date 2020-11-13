@@ -17,7 +17,7 @@ class Employee extends Component {
             <div className={classes.Main}>
                 {this.state.showEdit ? <span className={classes.EditBtn} onClick={this.toggleEdit} ><FontAwesomeIcon icon={faSave} color="green" /></span> : <span className={classes.EditBtn} onClick={this.toggleEdit}><FontAwesomeIcon icon={faEdit} color="blue" /></span>}
                 
-                 <span>Id - {this.props.id}</span><br />
+                 <span>ID - {this.props.id}</span><br />
                 <span>Name - {this.state.showEdit ? <InputField changed={this.props.changeName} val={this.props.name} /> : this.props.name}</span><br />
                 <span>Email - {this.state.showEdit ? <InputField changed={this.props.changeEmail} val={this.props.email} /> : this.props.email}</span><br />
                 <span>Phone - {this.state.showEdit ? <InputField changed={this.props.changePhone} val={this.props.phone} /> : this.props.phone}</span><br />
