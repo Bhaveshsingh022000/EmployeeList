@@ -5,6 +5,14 @@ import Employee from './Containers/Employee/Employee';
 import InputField from './Components/UI/Input/Input';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.emailRef = React.createRef();
+    this.phoneRef = React.createRef();
+    this.nameRef = React.createRef();
+    this.designationRef = React.createRef();
+  }
   state = {
     employees: [],
     tempName: "",
@@ -12,7 +20,7 @@ class App extends Component {
     tempEmail: "",
     tempPhone: "",
     tempDesignation: "",
-    showEdit: false
+    showEdit: false,
   }
 
   inputChangeHandler = (event, type) => {
@@ -35,18 +43,22 @@ class App extends Component {
   validate = () => {
     if(this.state.tempName.length === 0){
       alert("Name Cannot Be Empty");
+      this.nameRef.current.focus();
       return false;
     }
     if (!this.state.tempEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
       alert("Invalid Email");
+      this.emailRef.current.focus();
       return false;
     }
     if(this.state.tempPhone.length !== 10){
       alert(`Phone Number Should be of 10 digits, You have entered ${this.state.tempPhone.length} digits`);
+      this.phoneRef.current.focus();
       return false;
     }
     if(this.state.tempDesignation.length === 0){
       alert("Designation Cannot Be Empty");
+      this.designationRef.current.focus();
       return false;
     }
     return true;
@@ -119,10 +131,10 @@ class App extends Component {
       <div className={classes.Main}>
         <div className={classes.MainContainer}>
           <h1>Employee List</h1>
-          <InputField changed={(event) => this.inputChangeHandler(event, "name")} inputType="text" placeholderVal="Enter Name" />
-          <InputField changed={(event) => this.inputChangeHandler(event, "email")} inputType="email" placeholderVal="Enter Email" />
-          <InputField changed={(event) => this.inputChangeHandler(event, "phone")} inputType="number" placeholderVal="Enter Phone Number" />
-          <InputField changed={(event) => this.inputChangeHandler(event, "designation")} inputType="text" placeholderVal="Enter Designation" />
+          <InputField refer={this.nameRef} changed={(event) => this.inputChangeHandler(event, "name")} inputType="text" placeholderVal="Enter Name" />
+          <InputField refer={this.emailRef} changed={(event) => this.inputChangeHandler(event, "email")} inputType="email" placeholderVal="Enter Email" />
+          <InputField refer={this.phoneRef} changed={(event) => this.inputChangeHandler(event, "phone")} inputType="number" placeholderVal="Enter Phone Number" />
+          <InputField refer={this.designationRef} changed={(event) => this.inputChangeHandler(event, "designation")} inputType="text" placeholderVal="Enter Designation" />
           <button onClick={this.addEmployeeHandler}>Add Employee</button>
           {employees}
         </div>
