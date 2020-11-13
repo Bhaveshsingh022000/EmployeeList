@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Employees from './Components/Employees/Employees';
+import Employee from './Components/Employee/Employee';
 import InputField from './Components/UI/Input/Input';
 
 class App extends Component {
@@ -20,23 +20,23 @@ class App extends Component {
   }
 
   addEmployeeHandler = ()=>{
-    const employee = [...this.state.employees];
-    employee.push({id: Number(this.state.tempId + 1) , name: this.state.tempName});
-    this.setState({employees: employee, tempId:Number(this.state.tempId + 1)});
+    const employees = [...this.state.employees];
+    employees.push({id: Number(this.state.tempId + 1) , name: this.state.tempName});
+    this.setState({employees: employees, tempId:Number(this.state.tempId + 1)});
   }
 
   render() {
-    let employee = null;
+    let employees = null;
     if(this.state.employees.length !== 0){
-      employee = this.state.employees.map((el,index) =>{
-        return <Employees key={this.state.employees[index].id} name={this.state.employees[index].name} />
+      employees = this.state.employees.map((el,index) =>{
+        return <Employee key={this.state.employees[index].id} name={this.state.employees[index].name} />
       })
     }
     
     return (
       <div>
         <InputField change={this.inputChangeHandler}  /> <button onClick={this.addEmployeeHandler}>Add Employee</button>
-        {employee}
+        {employees}
       </div>
     );
   }
