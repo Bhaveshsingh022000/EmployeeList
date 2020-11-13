@@ -1,0 +1,28 @@
+
+.Main {
+  text-align: center;
+  background-color: rgb(123, 165, 201);
+  height: 98.5vh;
+  padding: 5px;
+}
+.MainContainer{
+  background-color: rgba(0, 0, 0,0.5);
+  height: 70vh;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.MainContainer h1{
+  color: white;
+  position: relative;
+  top: 15px;
+  margin-bottom: 30px;
+}
+
+.MainContainer input{
+  width: 170px;
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+}
