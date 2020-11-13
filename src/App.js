@@ -16,20 +16,20 @@ class App extends Component {
   }
 
   inputChangeHandler = (event, type) => {
-    if(type === "name"){
+    if (type === "name") {
       this.setState({ tempName: event.target.value });
-      console.log(this.state.tempName);
+      // console.log(this.state.tempName);
     }
-    if(type === "email"){
+    if (type === "email") {
       this.setState({ tempEmail: event.target.value });
     }
-    if(type === "phone"){
+    if (type === "phone") {
       this.setState({ tempPhone: event.target.value });
     }
-    if(type === "designation"){
+    if (type === "designation") {
       this.setState({ tempDesignation: event.target.value });
     }
-    
+
   }
 
   addEmployeeHandler = () => {
@@ -39,9 +39,30 @@ class App extends Component {
     console.log(this.state.employees);
   }
 
-  inputEditHandler = (event, i) => {
+  editNameHandler = (event, i) => {
     const employees = [...this.state.employees];
     employees[i].name = event.target.value;
+    this.setState({ employees: employees });
+    // console.log(this.state.employees[i].name);
+  }
+
+  editEmailHandler = (event, i) => {
+    const employees = [...this.state.employees];
+    employees[i].email = event.target.value;
+    this.setState({ employees: employees });
+    // console.log(this.state.employees[i].name);
+  }
+
+  editPhoneHandler = (event, i) => {
+    const employees = [...this.state.employees];
+    employees[i].phone = event.target.value;
+    this.setState({ employees: employees });
+    // console.log(this.state.employees[i].name);
+  }
+
+  editDesignationHandler = (event, i) => {
+    const employees = [...this.state.employees];
+    employees[i].designation = event.target.value;
     this.setState({ employees: employees });
     // console.log(this.state.employees[i].name);
   }
@@ -57,10 +78,15 @@ class App extends Component {
     if (this.state.employees.length !== 0) {
       employees = this.state.employees.map((el, index) => {
         return <Employee
-          changeEdit={(event) => this.inputEditHandler(event, index)}
+          changeName={(event) => this.editNameHandler(event, index)}
+          changePhone={(event) => this.editPhoneHandler(event, index)}
+          changeEmail={(event) => this.editEmailHandler(event, index)}
+          changeDesignation={(event) => this.editDesignationHandler(event, index)}
           key={this.state.employees[index].id}
           name={this.state.employees[index].name}
           email={this.state.employees[index].email}
+          phone={this.state.employees[index].phone}
+          designation={this.state.employees[index].designation}
           deleteEmployee={() => this.deleteHandler(index)}
         />
       })
@@ -70,10 +96,10 @@ class App extends Component {
       <div className={classes.Main}>
         <div className={classes.MainContainer}>
           <h1>Employee List</h1>
-          <InputField changed={(event) => this.inputChangeHandler(event,"name")} inputType="text" placeholderVal="Enter Name" />
-          <InputField changed={(event) => this.inputChangeHandler(event,"email")} inputType="email" placeholderVal="Enter Email" />
-          <InputField changed={(event) => this.inputChangeHandler(event,"phone")} inputType="number" placeholderVal="Enter Phone Number" />
-          <InputField changed={(event) => this.inputChangeHandler(event,"designation")} inputType="text" placeholderVal="Enter Designation" />
+          <InputField changed={(event) => this.inputChangeHandler(event, "name")} inputType="text" placeholderVal="Enter Name" />
+          <InputField changed={(event) => this.inputChangeHandler(event, "email")} inputType="email" placeholderVal="Enter Email" />
+          <InputField changed={(event) => this.inputChangeHandler(event, "phone")} inputType="number" placeholderVal="Enter Phone Number" />
+          <InputField changed={(event) => this.inputChangeHandler(event, "designation")} inputType="text" placeholderVal="Enter Designation" />
           <button onClick={this.addEmployeeHandler}>Add Employee</button>
           {employees}
         </div>
