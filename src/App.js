@@ -26,7 +26,6 @@ class App extends Component {
   inputChangeHandler = (event, type) => {
     if (type === "name") {
       this.setState({ tempName: event.target.value });
-      // console.log(this.state.tempName);
     }
     if (type === "email") {
       this.setState({ tempEmail: event.target.value });
@@ -68,38 +67,36 @@ class App extends Component {
     if (this.validate()) {
       const employees = [...this.state.employees];
       employees.push({ id: Number(this.state.tempId + 1), name: this.state.tempName, email: this.state.tempEmail, phone: this.state.tempPhone, designation: this.state.tempDesignation });
-      this.setState({ employees: employees, tempId: Number(this.state.tempId + 1) });
-      console.log(this.state.employees);
+      this.setState({ employees: employees, tempId: Number(this.state.tempId + 1)});
+      this.emailRef.current.value = "";
+      this.nameRef.current.value = "";
+      this.designationRef.current.value = "";
+      this.phoneRef.current.value = "";
     }
-
   }
 
   editNameHandler = (event, i) => {
     const employees = [...this.state.employees];
     employees[i].name = event.target.value;
     this.setState({ employees: employees });
-    // console.log(this.state.employees[i].name);
   }
 
   editEmailHandler = (event, i) => {
     const employees = [...this.state.employees];
     employees[i].email = event.target.value;
     this.setState({ employees: employees });
-    // console.log(this.state.employees[i].name);
   }
 
   editPhoneHandler = (event, i) => {
     const employees = [...this.state.employees];
     employees[i].phone = event.target.value;
     this.setState({ employees: employees });
-    // console.log(this.state.employees[i].name);
   }
 
   editDesignationHandler = (event, i) => {
     const employees = [...this.state.employees];
     employees[i].designation = event.target.value;
     this.setState({ employees: employees });
-    // console.log(this.state.employees[i].name);
   }
 
   deleteHandler = (i) => {
