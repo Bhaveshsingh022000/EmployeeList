@@ -15,9 +15,9 @@ class Employee extends Component {
         return (
             <div>
                 <p>
-                    {this.state.showEdit ? <InputField changed={(event)=>this.props.changeEdit(event,this.props.inputIndex)} val={this.props.name} /> : this.props.name}
-                    <span><FontAwesomeIcon icon={faTrashAlt} color="red" /></span>
-                    {this.state.showEdit ? <span><FontAwesomeIcon icon={faSave} color="green" onClick={this.toggleEdit} /></span> : <span onClick={this.toggleEdit}><FontAwesomeIcon icon={faEdit} color="blue" /></span>}
+                    {this.state.showEdit ? <InputField changed={this.props.changeEdit} val={this.props.name} /> : this.props.name}
+                    <span onClick={this.props.deleteEmployee}><FontAwesomeIcon icon={faTrashAlt} color="red" /></span>
+                    {this.state.showEdit ? <span onClick={this.toggleEdit} ><FontAwesomeIcon icon={faSave} color="green"/></span> : <span onClick={this.toggleEdit}><FontAwesomeIcon icon={faEdit} color="blue" /></span>}
                 </p>
             </div>
         );

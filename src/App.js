@@ -13,7 +13,7 @@ class App extends Component {
 
   inputChangeHandler = (event) => {
     this.setState({ tempName: event.target.value });
-    console.log(this.state.tempName);
+    // console.log(this.state.tempName);
   }
 
   addEmployeeHandler = () => {
@@ -26,7 +26,13 @@ class App extends Component {
     const employees = [...this.state.employees];
     employees[i].name = event.target.value;
     this.setState({employees: employees});
-    console.log(this.state.employees[i].name);
+    // console.log(this.state.employees[i].name);
+  }
+
+  deleteHandler = (i)=>{
+    let employees = [...this.state.employees];
+    employees.splice(i,1);
+    this.setState({employees: employees});
   }
 
   render() {
@@ -37,7 +43,7 @@ class App extends Component {
           changeEdit={(event)=>this.inputEditHandler(event,index)}
           key={this.state.employees[index].id}
           name={this.state.employees[index].name}
-          inputIndex = {index}
+          deleteEmployee = {()=>this.deleteHandler(index)}
         />
       })
     }
