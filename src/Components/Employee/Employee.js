@@ -1,9 +1,16 @@
 import React from 'react';
 
-const employee = (props)=>{
-    return(
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+
+const employee = (props) => {
+    return (
         <div>
-            <p>{props.name} <span>del</span></p>
+            <p>
+                {props.name}
+                <span><FontAwesomeIcon icon={faTrashAlt} color="red" /></span>
+                <span><FontAwesomeIcon icon={faEdit} color="blue" /></span>
+            </p>
         </div>
     );
 }
