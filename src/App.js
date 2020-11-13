@@ -32,11 +32,34 @@ class App extends Component {
 
   }
 
+  validate = () => {
+    if(this.state.tempName.length === 0){
+      alert("Name Cannot Be Empty");
+      return false;
+    }
+    if (!this.state.tempEmail.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      alert("Invalid Email");
+      return false;
+    }
+    if(this.state.tempPhone.length !== 10){
+      alert(`Phone Number Should be of 10 digits, You have entered ${this.state.tempPhone.length} digits`);
+      return false;
+    }
+    if(this.state.tempDesignation.length === 0){
+      alert("Designation Cannot Be Empty");
+      return false;
+    }
+    return true;
+  }
+
   addEmployeeHandler = () => {
-    const employees = [...this.state.employees];
-    employees.push({ id: Number(this.state.tempId + 1), name: this.state.tempName, email: this.state.tempEmail, phone: this.state.tempPhone, designation: this.state.tempDesignation });
-    this.setState({ employees: employees, tempId: Number(this.state.tempId + 1) });
-    console.log(this.state.employees);
+    if (this.validate()) {
+      const employees = [...this.state.employees];
+      employees.push({ id: Number(this.state.tempId + 1), name: this.state.tempName, email: this.state.tempEmail, phone: this.state.tempPhone, designation: this.state.tempDesignation });
+      this.setState({ employees: employees, tempId: Number(this.state.tempId + 1) });
+      console.log(this.state.employees);
+    }
+
   }
 
   editNameHandler = (event, i) => {
