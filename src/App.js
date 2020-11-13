@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Employee from './Components/Employee/Employee';
+import Employee from './Containers/Employee/Employee';
 import InputField from './Components/UI/Input/Input';
 
 class App extends Component {

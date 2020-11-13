@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
-import InputField from '../UI/Input/Input';
+import InputField from '../../Components/UI/Input/Input';
 
 class Employee extends Component {
     state = {
