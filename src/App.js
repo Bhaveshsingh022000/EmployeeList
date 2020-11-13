@@ -6,7 +6,7 @@ import InputField from './Components/UI/Input/Input';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.emailRef = React.createRef();
     this.phoneRef = React.createRef();
@@ -41,7 +41,7 @@ class App extends Component {
   }
 
   validate = () => {
-    if(this.state.tempName.length === 0){
+    if (this.state.tempName.length === 0) {
       alert("Name Cannot Be Empty");
       this.nameRef.current.focus();
       return false;
@@ -51,12 +51,12 @@ class App extends Component {
       this.emailRef.current.focus();
       return false;
     }
-    if(this.state.tempPhone.length !== 10){
+    if (this.state.tempPhone.length !== 10) {
       alert(`Phone Number Should be of 10 digits, You have entered ${this.state.tempPhone.length} digits`);
       this.phoneRef.current.focus();
       return false;
     }
-    if(this.state.tempDesignation.length === 0){
+    if (this.state.tempDesignation.length === 0) {
       alert("Designation Cannot Be Empty");
       this.designationRef.current.focus();
       return false;
@@ -118,6 +118,7 @@ class App extends Component {
           changeEmail={(event) => this.editEmailHandler(event, index)}
           changeDesignation={(event) => this.editDesignationHandler(event, index)}
           key={this.state.employees[index].id}
+          id={this.state.employees[index].id}
           name={this.state.employees[index].name}
           email={this.state.employees[index].email}
           phone={this.state.employees[index].phone}
@@ -135,7 +136,7 @@ class App extends Component {
           <InputField refer={this.emailRef} changed={(event) => this.inputChangeHandler(event, "email")} inputType="email" placeholderVal="Enter Email" />
           <InputField refer={this.phoneRef} changed={(event) => this.inputChangeHandler(event, "phone")} inputType="number" placeholderVal="Enter Phone Number" />
           <InputField refer={this.designationRef} changed={(event) => this.inputChangeHandler(event, "designation")} inputType="text" placeholderVal="Enter Designation" />
-          <button onClick={this.addEmployeeHandler}>Add Employee</button>
+          <button className={classes.AddBtn} onClick={this.addEmployeeHandler}>Add Employee</button>
           {employees}
         </div>
       </div>

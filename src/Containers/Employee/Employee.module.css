@@ -1,0 +1,41 @@
+.Main{
+    color: white;
+    width: 80%;
+    margin: auto;
+    background-color: rgb(50, 116, 146);
+    text-align: left;
+    padding-left: 25px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.DeleteBtn{
+    float: right;
+    position: relative;
+    z-index: 20;
+    top:-8px;
+    right: 10px;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.EditBtn{
+    float: right;
+    position: relative;
+    z-index: 20;
+    top:0px;
+    right: 10px;
+    font-size: 18px;
+    padding-top: 2px;
+    height: 28px;
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    text-align: center;
+    border-radius: 50%;
+}

@@ -1,16 +1,19 @@
 
 .Main {
   text-align: center;
-  background-color: rgb(123, 165, 201);
+  background-color: rgb(50, 116, 146);
   height: 98.5vh;
   padding: 5px;
+  
 }
 .MainContainer{
-  background-color: rgba(0, 0, 0,0.5);
-  height: 70vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 90vh;
   width: 80%;
   margin: auto;
   margin-top: 30px;
+  overflow: auto;
+  border-radius: 10px;
 }
 
 .MainContainer h1{
@@ -22,7 +25,17 @@
 
 .MainContainer input{
   width: 170px;
+  margin: 5px;
   height: 20px;
   border-radius: 5px;
   border: none;
+}
+
+.AddBtn{
+  width: 150px;
+  height: 24px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: rgb(47, 146, 108);
 }
