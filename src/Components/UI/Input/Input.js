@@ -2,9 +2,9 @@ import React from 'react';
 
 const inputField = (props) => {
     return (
-        <div>
-            <input type="text" onChange={props.change} />
-        </div>
+        <React.Fragment>
+            <input type="text" value={props.val} onChange={props.changed} />
+        </React.Fragment>
     );
 }
 export default inputField;

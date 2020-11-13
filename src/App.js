@@ -5,37 +5,47 @@ import InputField from './Components/UI/Input/Input';
 
 class App extends Component {
   state = {
-    employees:[],
+    employees: [],
     tempName: "",
-    tempId: 0
+    tempId: 0,
+    showEdit: false
   }
 
-  inputChangeHandler = (event)=>{
-    // const name = event.target.value;
-    // const e = [...this.state.employees];
-    // e[0].name = name;
-    // this.setState({employees: e});
-    // console.log(this.state.tempName);
-    this.setState({tempName: event.target.value});
+  inputChangeHandler = (event) => {
+    this.setState({ tempName: event.target.value });
+    console.log(this.state.tempName);
   }
 
-  addEmployeeHandler = ()=>{
+  addEmployeeHandler = () => {
     const employees = [...this.state.employees];
-    employees.push({id: Number(this.state.tempId + 1) , name: this.state.tempName});
-    this.setState({employees: employees, tempId:Number(this.state.tempId + 1)});
+    employees.push({ id: Number(this.state.tempId + 1), name: this.state.tempName });
+    this.setState({ employees: employees, tempId: Number(this.state.tempId + 1) });
+  }
+
+  inputEditHandler = (event,i) =>{
+    const employees = [...this.state.employees];
+    employees[i].name = event.target.value;
+    this.setState({employees: employees});
+    console.log(this.state.employees[i].name);
   }
 
   render() {
     let employees = null;
-    if(this.state.employees.length !== 0){
-      employees = this.state.employees.map((el,index) =>{
-        return <Employee key={this.state.employees[index].id} name={this.state.employees[index].name} />
+    if (this.state.employees.length !== 0) {
+      employees = this.state.employees.map((el, index) => {
+        return <Employee
+          changeEdit={(event)=>this.inputEditHandler(event,index)}
+          key={this.state.employees[index].id}
+          name={this.state.employees[index].name}
+          inputIndex = {index}
+        />
       })
     }
-    
+
     return (
       <div>
-        <InputField change={this.inputChangeHandler}  /> <button onClick={this.addEmployeeHandler}>Add Employee</button>
+        <InputField changed={this.inputChangeHandler} /> 
+        <button onClick={this.addEmployeeHandler}>Add Employee</button>
         {employees}
       </div>
     );
